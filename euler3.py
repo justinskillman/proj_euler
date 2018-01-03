@@ -3,7 +3,7 @@
 import math
 
 
-def isprime2(n):
+def is_prime(n):
     """Returns True if n is prime."""
     if n == 2:
         return True
@@ -30,5 +30,5 @@ def isprime2(n):
 target = 600851475143
 
 divs = [x for x in xrange(3, int(math.floor(math.sqrt(target)))) if target % x == 0]
-pdivs = [x for x in divs if isprime2(x)]
+pdivs = [x for x in divs if is_prime(x)]
 print(max(pdivs))
