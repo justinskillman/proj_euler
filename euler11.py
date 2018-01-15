@@ -32,7 +32,7 @@ mtx.shape = (20, 20)
 # Parameters
 prod_len = 4
 rand_mtx = False
-mtx_size = 40
+mtx_size = 200
 if rand_mtx:
     mtx = np.random.randint(0, 99, size=(mtx_size, mtx_size))
 
