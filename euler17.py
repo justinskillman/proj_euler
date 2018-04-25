@@ -2,22 +2,33 @@
 
 # Functions
 def len_numbword(lett_str):
+
+    j = 0
+    while lett_str[j] == '0':
+        j += 1
+    lett_str = lett_str[j:]
+
     if len(lett_str) == 1:  # if one digit
         return cypher[''.join(lett_str)]
     elif len(lett_str) == 2:  # if two digit
         if lett_str[0] == '1':  # if *teen
             return cypher[''.join(lett_str)]
         else:  # if >19 and <100
-            return cypher[''.join(lett_str[0] + '0')] + cypher[''.join(lett_str[1])]
+            return cypher[''.join(lett_str[0] + '0')] + \
+                    cypher[''.join(lett_str[1])]
     elif len(lett_str) == 3:  # if three digit
-        return len_numbword(lett_str[0]) + lhund + len_numbword(lett_str[1:2])
+        if lett_str[1:] == ['0', '0']:
+            return len_numbword(lett_str[0]) + lhund
+        else:
+            return len_numbword(lett_str[0]) + lhund + \
+                    len_numbword(lett_str[1:]) + land
     else:  # if 1000
         return lonethous
 
 
 # Conversion Data
 cypher = dict()
-cypher['0'] =
+cypher['0'] = 0
 cypher['1'] = 3  # one
 cypher['2'] = 3  # two
 cypher['3'] = 5  # three
@@ -49,6 +60,7 @@ cypher['80'] = 6  # eighty
 cypher['90'] = 6  # ninety
 
 lhund = 7  # hundred
+land = 3  # and
 lonethous = 11  # one thousand
 
 # Main
@@ -58,8 +70,3 @@ for j in range(1, 1000 + 1):
     count += len_numbword(lett_str)
 
 print(count)
-
-
-
-
-
